@@ -3,12 +3,6 @@ require "aws-sdk"
 
 module BundleCache
   def self.cache
-    # Setup AWS credentials
-    AWS.config({
-      :access_key_id => ENV["AWS_S3_KEY"],
-      :secret_access_key => ENV["AWS_S3_SECRET"]
-    })
-
     acl_to_use = ENV["KEEP_BUNDLE_PRIVATE"] ? :private : :public_read
     bundle_dir = ENV["BUNDLE_DIR"] || "~/.bundle"
     processing_dir = ENV["PROCESS_DIR"] || ENV["HOME"]

@@ -16,8 +16,8 @@ Adding this to your Gemfile defeats the purpose. Instead, run
 You'll need to set some environment variables to make this work.
 
 ```
-AWS_S3_KEY=<your aws access key>
-AWS_S3_SECRET=<your aws secret>
+AWS_ACCESS_KEY_ID=<your aws access key>
+AWS_SECRET_ACCESS_KEY=<your aws secret>
 AWS_S3_BUCKET=<your bucket name>
 BUNDLE_ARCHIVE=<the filename to use for your cache>
 ```
@@ -48,7 +48,7 @@ add the AWS credentials:
 
 1. Install the travis gem with gem install travis
 2. Log into Travis with travis login --auto (from inside your project respository directory)
-3. Encrypt your S3 credentials with: travis encrypt AWS_S3_KEY="" AWS_S3_SECRET="" --add (be sure to add your actual credentials inside the double quotes)
+3. Encrypt your S3 credentials with: travis encrypt AWS_ACCESS_KEY_ID="" AWS_SECRET_ACCESS_KEY="" --add (be sure to add your actual credentials inside the double quotes)
 
 ## License
 

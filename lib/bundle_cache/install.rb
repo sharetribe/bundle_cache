@@ -10,10 +10,6 @@ module BundleCache
     bundle_dir = ENV["BUNDLE_DIR"] || "~/.bundle"
     processing_dir = ENV['PROCESS_DIR'] || ENV['HOME']
 
-    AWS.config({
-      :access_key_id => ENV["AWS_S3_KEY"],
-      :secret_access_key => ENV["AWS_S3_SECRET"]
-    })
     s3 = AWS::S3.new
     bucket = s3.buckets[bucket_name]
 
