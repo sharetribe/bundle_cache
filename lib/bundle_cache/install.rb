@@ -12,8 +12,7 @@ module BundleCache
 
     AWS.config({
       :access_key_id => ENV["AWS_S3_KEY"],
-      :secret_access_key => ENV["AWS_S3_SECRET"],
-      :region => ENV["AWS_S3_REGION"] || "us-east-1"
+      :secret_access_key => ENV["AWS_S3_SECRET"]
     })
     s3 = AWS::S3.new
     bucket = s3.buckets[bucket_name]

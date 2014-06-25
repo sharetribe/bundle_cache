@@ -22,7 +22,7 @@ AWS_S3_BUCKET=<your bucket name>
 BUNDLE_ARCHIVE=<the filename to use for your cache>
 ```
 
-Optionally, you can set the `AWS_S3_REGION` variable if you don't use us-east-1.
+Optionally, you can set the `AWS_DEFAULT_REGION` variable if you don't use us-east-1.
 
 ## Travis configuration
 
