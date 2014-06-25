@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/data-axle/bundle_cache.png?branch=master)](https://travis-ci.org/data-axle/bundle_cache)
 
-Utility for caching bundled gems on S3. Useful for speeding up Travis builds - 
+Utility for caching bundled gems on S3. Useful for speeding up Travis builds -
 it doesn't need to wait for `bundle install` to download/install all gems.
 
 ## Installation
@@ -52,5 +52,5 @@ add the AWS credentials:
 
 ## License
 
-This code was originally written by Matias Korhonen and is available at 
+This code was originally written by Matias Korhonen and is available at
 http://randomerrata.com/post/45827813818/travis-s3. It is MIT licensed.
