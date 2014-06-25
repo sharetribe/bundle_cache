@@ -24,6 +24,13 @@ BUNDLE_ARCHIVE=<the filename to use for your cache>
 
 Optionally, you can set the `AWS_DEFAULT_REGION` variable if you don't use us-east-1.
 
+If you're using [IAM roles](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html) for your S3 credentials you might run into issues like "The AWS Access Key Id you provided does not exist in our records."
+In this case you wont need the `AWS_ACCESS_KEY_ID` or `AWS_SECRET_ACCESS_KEY` only the `AWS_SESSION_TOKEN`.
+
+```
+AWS_SESSION_TOKEN=<your aws session token>
+```
+
 ## Travis configuration
 
 Add these to your Travis configuration:
