@@ -1,5 +1,5 @@
 require "digest"
-require "aws-sdk"
+require "open-uri"
 
 module BundleCache
   def self.install
@@ -10,17 +10,12 @@ module BundleCache
     bundle_dir = ENV["BUNDLE_DIR"] || "~/.bundle"
     processing_dir = ENV['PROCESS_DIR'] || ENV['HOME']
 
-    s3 = AWS::S3.new
-    bucket = s3.buckets[bucket_name]
-
-    gem_archive = bucket.objects[file_name]
-    hash_object = bucket.objects[digest_filename]
+    gem_archive = open("https://#{bucket_name}.s3.amazonaws.com/#{file_name}")
+    hash_object = open("https://#{bucket_name}.s3.amazonaws.com/#{digest_filename}")
 
     puts "=> Downloading the bundle"
     File.open("#{processing_dir}/remote_#{file_name}", 'wb') do |file|
-      gem_archive.read do |chunk|
-        file.write(chunk)
-      end
+      file << gem_archive.read
     end
     puts "  => Completed bundle download"
 
@@ -29,14 +24,12 @@ module BundleCache
 
     puts "=> Downloading the digest file"
     File.open("#{processing_dir}/remote_#{file_name}.sha2", 'wb') do |file|
-      hash_object.read do |chunk|
-        file.write(chunk)
-      end
+      file << hash_object.read
     end
     puts "  => Completed digest download"
 
     puts "=> All done!"
-  rescue AWS::S3::Errors::NoSuchKey
+  rescue OpenURI::HTTPError
     puts "There's no such archive!"
   end
 

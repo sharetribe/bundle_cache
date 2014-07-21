@@ -8,7 +8,14 @@ module BundleCache
       abort("Missing ENV[#{var}]") unless ENV[var]
     end
 
-    abort("Missing required AWS credentials") if (session_token_missing? && access_keys_missing?)
+    if aws_credentials_missing?
+     puts "WARNING: Missing AWS credentials"
+     puts "You can not upload a new version of the archive"
+   end
+  end
+
+  def aws_credentials_missing?
+    (session_token_missing? && access_keys_missing?)
   end
 
   def session_token_missing?
